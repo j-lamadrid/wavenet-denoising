@@ -65,8 +65,7 @@ class WaveNetModel(nn.Module):
         self.start_conv = nn.Conv1d(in_channels=self.classes,
                                     out_channels=residual_channels,
                                     kernel_size=1,
-                                    bias=bias,
-                                    padding='same')
+                                    bias=bias)
 
         for b in range(blocks):
             additional_scope = kernel_size - 1
@@ -111,15 +110,13 @@ class WaveNetModel(nn.Module):
 
         self.end_conv_1 = nn.Conv1d(in_channels=skip_channels,
                                   out_channels=end_channels,
-                                  kernel_size=3,
-                                  bias=True,
-                                  padding='same')
+                                  kernel_size=1,
+                                  bias=True)
 
         self.end_conv_2 = nn.Conv1d(in_channels=end_channels,
                                     out_channels=classes,
-                                    kernel_size=3,
-                                    bias=True,
-                                    padding='same')
+                                    kernel_size=1,
+                                    bias=True)
 
         # self.output_length = 2 ** (layers - 1)
         self.output_length = output_length
