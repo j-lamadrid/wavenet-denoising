@@ -110,12 +110,12 @@ class WaveNetModel(nn.Module):
 
         self.end_conv_1 = nn.Conv1d(in_channels=skip_channels,
                                   out_channels=end_channels,
-                                  kernel_size=1,
+                                  kernel_size=3,
                                   bias=True)
 
         self.end_conv_2 = nn.Conv1d(in_channels=end_channels,
                                     out_channels=classes,
-                                    kernel_size=1,
+                                    kernel_size=3,
                                     bias=True)
 
         # self.output_length = 2 ** (layers - 1)
